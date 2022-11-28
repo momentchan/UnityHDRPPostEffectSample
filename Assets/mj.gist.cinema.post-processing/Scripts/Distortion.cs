@@ -15,7 +15,7 @@ namespace Cinema.PostProcessing
         public ClampedFloatParameter noiseDistortionTimeScale = new ClampedFloatParameter(5, 0, 10.0f);
 
         public ClampedFloatParameter maxNoiseDistortionPower = new ClampedFloatParameter(0.15f, 0, 1.0f);
-        public ClampedFloatParameter maxBarrelDistortionPower = new ClampedFloatParameter(0.3f, 0, 10f);
+        public ClampedFloatParameter maxBarrelDistortionPower = new ClampedFloatParameter(6f, 0, 10f);
 
         public Vector2Parameter barrelDistortionPower = new Vector2Parameter(new Vector2(0, 0));
         public FloatParameter effectTime = new FloatParameter(0.25f);
