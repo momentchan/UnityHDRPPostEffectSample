@@ -5,10 +5,11 @@ using UnityEngine.Rendering.HighDefinition;
 namespace Cinema.PostProcessing
 {
     [System.Serializable, VolumeComponentMenu("Post-processing/Cinema/Reflection")]
-    public sealed class Reflection : CustomPostProcessVolumeComponent, IPostProcessComponent
+    public sealed class Reflection : PostProcessComponent
     {
         public Bool​Parameter isHorizontal = new Bool​Parameter(false);
         public Bool​Parameter isVertical = new Bool​Parameter(false);
+        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private Material _material;
 
@@ -19,7 +20,7 @@ namespace Cinema.PostProcessing
             internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         }
 
-        public bool IsActive() => _material != null && (isHorizontal.value  || isVertical.value);
+        public override bool IsActive() => _material != null && (isHorizontal.value || isVertical.value);
 
         public override CustomPostProcessInjectionPoint injectionPoint =>
             CustomPostProcessInjectionPoint.AfterPostProcess;
@@ -47,6 +48,21 @@ namespace Cinema.PostProcessing
         public override void Cleanup()
         {
             CoreUtils.Destroy(_material);
+        }
+
+        public override void Execute(MonoBehaviour go, PostProcessType type)
+        {
+            if (type == PostProcessType.ReflectionHorizontal)
+                isHorizontal.value = !isHorizontal.value;
+
+            if (type == PostProcessType.ReflectionVertical)
+                isVertical.value = !isVertical.value;
+        }
+
+        public override void Reset()
+        {
+            isHorizontal.value = false;
+            isVertical.value = false;
         }
     }
 }

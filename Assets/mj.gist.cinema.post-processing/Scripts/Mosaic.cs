@@ -1,3 +1,5 @@
+using System.Collections;
+using Cinema.PostProcessing.KMath;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
@@ -5,10 +7,13 @@ using UnityEngine.Rendering.HighDefinition;
 namespace Cinema.PostProcessing
 {
     [System.Serializable, VolumeComponentMenu("Post-processing/Cinema/Mosaic")]
-    public sealed class Mosaic : CustomPostProcessVolumeComponent, IPostProcessComponent
+    public sealed class Mosaic : PostProcessComponent
     {
         public ClampedFloatParameter scale = new ClampedFloatParameter(0f, 0f, 100.0f);
+        public ClampedFloatParameter maxScale = new ClampedFloatParameter(64f, 0f, 100.0f);
         public Bool​Parameter isCircle = new Bool​Parameter(false);
+        public FloatParameter effectTime = new FloatParameter(0.25f);
+
         Material _material;
 
         static class ShaderIDs
@@ -18,7 +23,7 @@ namespace Cinema.PostProcessing
             internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         }
 
-        public bool IsActive() => _material != null && (scale.value > 0);
+        public override bool IsActive() => _material != null && (scale.value > 0);
 
         public override CustomPostProcessInjectionPoint injectionPoint =>
             CustomPostProcessInjectionPoint.AfterPostProcess;
@@ -47,6 +52,27 @@ namespace Cinema.PostProcessing
         public override void Cleanup()
         {
             CoreUtils.Destroy(_material);
+        }
+
+        public override void Execute(MonoBehaviour go, PostProcessType type)
+        {
+            go.StartCoroutine(ActionMosaic());
+        }
+
+        public override void Reset()
+        {
+            isCircle.value = false;
+        }
+
+        IEnumerator ActionMosaic()
+        {
+            float duration = effectTime.value;
+            while (duration > 0f)
+            {
+                duration = Mathf.Max(duration - Time.deltaTime, 0);
+                scale.value = Easing.Ease(EaseType.QuadOut, maxScale.value, 1, 1f - duration / effectTime.value);
+                yield return null;
+            }
         }
     }
 }

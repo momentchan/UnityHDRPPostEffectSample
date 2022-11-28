@@ -6,12 +6,12 @@ using Cinema.PostProcessing.KMath;
 namespace Cinema.PostProcessing
 {
     [System.Serializable, VolumeComponentMenu("Post-processing/Cinema/RandomInvert")]
-    public sealed class RandomInvert : CustomPostProcessVolumeComponent, IPostProcessComponent
+    public sealed class RandomInvert : PostProcessComponent
     {
         public ClampedFloatParameter fadeTime = new ClampedFloatParameter(0.25f, 0f, 3f);
         public ClampedFloatParameter noiseScale = new ClampedFloatParameter(250f, 0f, 500f);
         public Bool​Parameter startInvert = new Bool​Parameter(false);
-
+        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private Material _material;
         private float fadeDuration = 0;
@@ -32,7 +32,7 @@ namespace Cinema.PostProcessing
             internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         }
 
-        public bool IsActive() => _material != null && (fadeTime.value > 0);
+        public override bool IsActive() => _material != null && (fadeTime.value > 0);
 
         public override CustomPostProcessInjectionPoint injectionPoint =>
             CustomPostProcessInjectionPoint.AfterPostProcess;
@@ -89,6 +89,17 @@ namespace Cinema.PostProcessing
         public override void Cleanup()
         {
             CoreUtils.Destroy(_material);
+        }
+
+        public override void Execute(MonoBehaviour go, PostProcessType type)
+        {
+            startInvert.value = !startInvert.value;
+        }
+
+        public override void Reset()
+        {
+            startInvert.value = false;
+            isInvert = false;
         }
     }
 }

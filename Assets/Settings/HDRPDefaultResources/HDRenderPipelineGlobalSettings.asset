@@ -68,21 +68,21 @@ MonoBehaviour:
   beforePostProcessCustomPostProcesses: []
   afterPostProcessBlursCustomPostProcesses: []
   afterPostProcessCustomPostProcesses:
-  - Cinema.PostProcessing.Distortion, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+  - Cinema.PostProcessing.Distortion, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  - Cinema.PostProcessing.GodRay, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+  - Cinema.PostProcessing.GodRay, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  - Cinema.PostProcessing.Mosaic, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+  - Cinema.PostProcessing.Mosaic, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  - Cinema.PostProcessing.RadiationBlur, Cinema.Postprocessing, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  - Cinema.PostProcessing.RandomInvert, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+  - Cinema.PostProcessing.RadiationBlur, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  - Cinema.PostProcessing.RectBlockGlitch, Cinema.Postprocessing, Version=0.0.0.0,
-    Culture=neutral, PublicKeyToken=null
-  - Cinema.PostProcessing.Reflection, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+  - Cinema.PostProcessing.RandomInvert, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
-  - Cinema.PostProcessing.RGBShift, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+  - Cinema.PostProcessing.RectBlockGlitch, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.Reflection, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.RGBShift, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
     PublicKeyToken=null
   beforeTAACustomPostProcesses: []
   lightLayerName0: Light Layer default

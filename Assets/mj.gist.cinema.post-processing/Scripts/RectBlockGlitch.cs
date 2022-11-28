@@ -1,3 +1,5 @@
+using System.Collections;
+using Cinema.PostProcessing.KMath;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
@@ -5,12 +7,14 @@ using UnityEngine.Rendering.HighDefinition;
 namespace Cinema.PostProcessing
 {
     [System.Serializable, VolumeComponentMenu("Post-processing/Cinema/RectBlockGlitch")]
-    public sealed class RectBlockGlitch : CustomPostProcessVolumeComponent, IPostProcessComponent
+    public sealed class RectBlockGlitch : PostProcessComponent
     {
         public ClampedFloatParameter noiseSpeed = new ClampedFloatParameter(0.9f, 0f, 1.0f); //ノイズテクスチャの隣の色になる確率
         public ClampedFloatParameter noiseColorChange = new ClampedFloatParameter(0.85f, 0f, 1.0f); //ノイズの更新頻度
         public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1.0f); //ずらす強さ
         public ClampedIntParameter glitchScale = new ClampedIntParameter(55, 0, 150); //ずらす高さ
+        public ClampedFloatParameter maxIntensity = new ClampedFloatParameter(0.95f, 0f, 1.0f); //ずらす強さ
+        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private Material _material;
         private Texture2D noiseTexture;
@@ -24,7 +28,7 @@ namespace Cinema.PostProcessing
             internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         }
 
-        public bool IsActive() => _material != null && (intensity.value > 0);
+        public override bool IsActive() => _material != null && (intensity.value > 0);
 
         public override CustomPostProcessInjectionPoint injectionPoint =>
             CustomPostProcessInjectionPoint.AfterPostProcess;
@@ -109,6 +113,27 @@ namespace Cinema.PostProcessing
         public override void Cleanup()
         {
             CoreUtils.Destroy(_material);
+        }
+
+        public override void Execute(MonoBehaviour go, PostProcessType type)
+        {
+            go.StartCoroutine(Coroutine());
+        }
+
+        public override void Reset()
+        {
+            intensity.value = 0;
+        }
+
+        private IEnumerator Coroutine()
+        {
+            float duration = effectTime.value;
+            while (duration > 0f)
+            {
+                duration = Mathf.Max(duration - Time.deltaTime, 0);
+                intensity.value = Easing.Ease(EaseType.QuadOut, maxIntensity.value, 0, 1f - duration / effectTime.value);
+                yield return null;
+            }
         }
     }
 }
