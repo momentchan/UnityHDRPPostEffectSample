@@ -20,57 +20,57 @@ namespace Cinema.PostProcessing
             profile = GetComponent<Volume>().profile;
             if (profile == null)
             {
-                Debug.LogError("Please set a volume profile on ImageEffectManager.");
+                Debug.LogError("There is no volume attached.");
                 return;
             }
 
-            mapper.Add(PostProcessType.ReflectionHorizontal, typeof(Reflection));
-            mapper.Add(PostProcessType.ReflectionVertical, typeof(Reflection));
-            mapper.Add(PostProcessType.Mosaic, typeof(Mosaic));
-            mapper.Add(PostProcessType.RadiationBlur, typeof(RadiationBlur));
-            mapper.Add(PostProcessType.RectBlockGlitch, typeof(RectBlockGlitch));
-            mapper.Add(PostProcessType.NoiseDistortion, typeof(Distortion));
             mapper.Add(PostProcessType.BarrelDistortion, typeof(Distortion));
+            mapper.Add(PostProcessType.NoiseDistortion, typeof(Distortion));
+            mapper.Add(PostProcessType.Mosaic, typeof(Mosaic));
+            mapper.Add(PostProcessType.RectBlockGlitch, typeof(RectBlockGlitch));
             mapper.Add(PostProcessType.RGBShift, typeof(RGBShift));
             mapper.Add(PostProcessType.RandomInvert, typeof(RandomInvert));
+            mapper.Add(PostProcessType.RadiationBlur, typeof(RadiationBlur));
+            mapper.Add(PostProcessType.ReflectionHorizontal, typeof(Reflection));
+            mapper.Add(PostProcessType.ReflectionVertical, typeof(Reflection));
 
-            foreach (var key in wrapers)
+            foreach (var wraper in wrapers)
             {
-                var component = profile.components.FirstOrDefault(c => c.GetType() == mapper[key.type]);
-                key.SetComponent((PostProcessComponent)component);
-                key.Reset();
+                var component = profile.components.FirstOrDefault(c => c.GetType() == mapper[wraper.type]);
+                wraper.SetComponent((PostProcessComponent)component);
+                wraper.Reset();
             }
         }
 
         private void Update()
         {
-            foreach (var key in wrapers)
+            foreach (var wrapper in wrapers)
             {
-                if (key.IsValid && Input.GetKeyDown(key.key))
+                if (wrapper.IsValid && Input.GetKeyDown(wrapper.key))
                 {
-                    key.Execute(this);
+                    wrapper.Execute(this);
                 }
             }
         }
 
         private void OnDestroy()
         {
-            foreach (var key in wrapers)
-                key.Reset();
+            foreach (var wrapper in wrapers)
+                wrapper.Reset();
         }
     }
 
     public enum PostProcessType
     {
+        BarrelDistortion,
+        NoiseDistortion,
+        Mosaic,
+        RectBlockGlitch,
+        RGBShift,
+        RandomInvert,
+        RadiationBlur,
         ReflectionHorizontal,
         ReflectionVertical,
-        Mosaic,
-        RadiationBlur,
-        RectBlockGlitch,
-        NoiseDistortion,
-        BarrelDistortion,
-        RGBShift,
-        RandomInvert
     }
 
     [Serializable]

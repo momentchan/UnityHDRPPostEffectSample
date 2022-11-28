@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   center:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   power:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   maxPower:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 64
   effectTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
 --- !u!114 &-2910055180468845883
 MonoBehaviour:
@@ -39,16 +39,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   fadeTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
   noiseScale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 250
   startInvert:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   effectTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
   easeType: 14
   isInvert: 0
@@ -66,22 +66,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   noiseSpeed:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.9
   noiseColorChange:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.85
   intensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   glitchScale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 55
   maxIntensity:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.95
   effectTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
 --- !u!114 &-56729043617830646
 MonoBehaviour:
@@ -97,13 +97,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   power:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   iteration:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 50
   rayDistance:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.4
 --- !u!114 &11400000
 MonoBehaviour:
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Name: Volume
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 3591970128747130474}
   - {fileID: -56729043617830646}
   - {fileID: 1851089272024381373}
   - {fileID: -5218296514564549755}
@@ -126,6 +125,7 @@ MonoBehaviour:
   - {fileID: -1487213958045309889}
   - {fileID: 9191477438897090540}
   - {fileID: 8796806661447172691}
+  - {fileID: 4057247792243928735}
 --- !u!114 &1851089272024381373
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -140,18 +140,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   scale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   maxScale:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 64
   isCircle:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   effectTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
---- !u!114 &3591970128747130474
+--- !u!114 &4057247792243928735
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,7 +181,7 @@ MonoBehaviour:
     m_Value: 0.15
   maxBarrelDistortionPower:
     m_OverrideState: 0
-    m_Value: 0.3
+    m_Value: 6
   barrelDistortionPower:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0}
@@ -202,13 +202,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   power:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   maxPower:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 54
   effectTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
 --- !u!114 &9191477438897090540
 MonoBehaviour:
@@ -224,11 +224,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   isHorizontal:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   isVertical:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   effectTime:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
