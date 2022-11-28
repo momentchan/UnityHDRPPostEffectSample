@@ -1,5 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8835993827542509818
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d007cb28f508cf64dab16cf953d8edd6, type: 3}
+  m_Name: RectBlockGlitch
+  m_EditorClassIdentifier: 
+  active: 1
+  noiseSpeed:
+    m_OverrideState: 0
+    m_Value: 0.9
+  noiseColorChange:
+    m_OverrideState: 0
+    m_Value: 0.85
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+  glitchScale:
+    m_OverrideState: 0
+    m_Value: 55
+--- !u!114 &-8211265492378459674
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae7c981926513ae479a3aff37754a8e4, type: 3}
+  m_Name: GodRay
+  m_EditorClassIdentifier: 
+  active: 1
+  power:
+    m_OverrideState: 0
+    m_Value: 0
+  iteration:
+    m_OverrideState: 0
+    m_Value: 50
+  rayDistance:
+    m_OverrideState: 0
+    m_Value: 0.4
+--- !u!114 &-7741714500368312153
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8a0f38b1204b046b9e956a8be6235e, type: 3}
+  m_Name: RadiationBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  power:
+    m_OverrideState: 0
+    m_Value: 0
 --- !u!114 &-7089757308646879465
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -46,6 +112,46 @@ MonoBehaviour:
   m_SampleCount:
     m_OverrideState: 1
     m_Value: 8
+--- !u!114 &-5809753956064274143
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da34fc8e164e6eb498b9e3479836988a, type: 3}
+  m_Name: RGBShift
+  m_EditorClassIdentifier: 
+  active: 1
+  power:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &-3166331044416020618
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2dae8775b244644af4ad8362618602, type: 3}
+  m_Name: RandomInvert
+  m_EditorClassIdentifier: 
+  active: 1
+  fadeTime:
+    m_OverrideState: 0
+    m_Value: 0.25
+  noiseScale:
+    m_OverrideState: 0
+    m_Value: 250
+  startInvert:
+    m_OverrideState: 0
+    m_Value: 0
+  easeType: 14
+  isInvert: 0
 --- !u!114 &-1016694868962581565
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -105,7 +211,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: DefaultSettingsVolumeProfile
+  m_Name: Volume
   m_EditorClassIdentifier: 
   components:
   - {fileID: 7686318427622180703}
@@ -117,6 +223,15 @@ MonoBehaviour:
   - {fileID: 1932259527246508038}
   - {fileID: 448115243408767295}
   - {fileID: -7089757308646879465}
+  - {fileID: 6295736502476561112}
+  - {fileID: 5170115291445711797}
+  - {fileID: -8211265492378459674}
+  - {fileID: 4526778090539354085}
+  - {fileID: -7741714500368312153}
+  - {fileID: -3166331044416020618}
+  - {fileID: -8835993827542509818}
+  - {fileID: 3603891574380775317}
+  - {fileID: -5809753956064274143}
 --- !u!114 &448115243408767295
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -315,6 +430,69 @@ MonoBehaviour:
   fogType:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &3603891574380775317
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f35bec62136d424d91b7c2c65eda7db, type: 3}
+  m_Name: Reflection
+  m_EditorClassIdentifier: 
+  active: 1
+  isHorizontal:
+    m_OverrideState: 0
+    m_Value: 0
+  isVertical:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &4526778090539354085
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a608ed2ba025c641875adce2bf13882, type: 3}
+  m_Name: Mosaic
+  m_EditorClassIdentifier: 
+  active: 1
+  scale:
+    m_OverrideState: 0
+    m_Value: 1
+  isCircle:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &5170115291445711797
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598e2d32e2c7b0c418e030c3236d663a, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  quality:
+    m_OverrideState: 0
+    m_Value: 1
+  spectralLut:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+  intensity:
+    m_OverrideState: 0
+    m_Value: 0
+  m_MaxSamples:
+    m_OverrideState: 0
+    m_Value: 6
 --- !u!114 &5315503232242033309
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -466,6 +644,34 @@ MonoBehaviour:
   proceduralSoftness:
     m_OverrideState: 0
     m_Value: 0.5
+--- !u!114 &6295736502476561112
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeaae3b8769eed44f9193c8883f90feb, type: 3}
+  m_Name: Distortion
+  m_EditorClassIdentifier: 
+  active: 1
+  noiseDistortionScale:
+    m_OverrideState: 0
+    m_Value: 0.5
+  noiseDistortionPosition:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 1}
+  noiseDistortionPower:
+    m_OverrideState: 0
+    m_Value: 0
+  noiseDistortionTimeScale:
+    m_OverrideState: 0
+    m_Value: 5
+  barrelDistortionPower:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0}
 --- !u!114 &7502528774814404555
 MonoBehaviour:
   m_ObjectHideFlags: 3

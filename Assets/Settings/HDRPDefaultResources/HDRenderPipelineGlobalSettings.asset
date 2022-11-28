@@ -67,7 +67,23 @@ MonoBehaviour:
   beforeTransparentCustomPostProcesses: []
   beforePostProcessCustomPostProcesses: []
   afterPostProcessBlursCustomPostProcesses: []
-  afterPostProcessCustomPostProcesses: []
+  afterPostProcessCustomPostProcesses:
+  - Cinema.PostProcessing.Distortion, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.GodRay, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.Mosaic, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.RadiationBlur, Cinema.Postprocessing, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  - Cinema.PostProcessing.RandomInvert, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.RectBlockGlitch, Cinema.Postprocessing, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
+  - Cinema.PostProcessing.Reflection, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
+  - Cinema.PostProcessing.RGBShift, Cinema.Postprocessing, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
   beforeTAACustomPostProcesses: []
   lightLayerName0: Light Layer default
   lightLayerName1: Light Layer 1
