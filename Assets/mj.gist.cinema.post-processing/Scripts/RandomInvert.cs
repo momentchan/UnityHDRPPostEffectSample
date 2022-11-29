@@ -9,7 +9,6 @@ namespace Cinema.PostProcessing
     [System.Serializable, VolumeComponentMenu("Post-processing/Cinema/RandomInvert")]
     public sealed class RandomInvert : PostProcessComponent
     {
-        public ClampedFloatParameter fadeTime = new ClampedFloatParameter(0.25f, 0f, 3f);
         public ClampedFloatParameter noiseScale = new ClampedFloatParameter(250f, 0f, 500f);
         public FloatParameter threshold = new FloatParameter(0);
         public Bool​Parameter isInvert = new BoolParameter(false);
@@ -28,7 +27,7 @@ namespace Cinema.PostProcessing
             internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         }
 
-        public override bool IsActive() => _material != null && (fadeTime.value > 0);
+        public override bool IsActive() => _material != null;
 
         public override CustomPostProcessInjectionPoint injectionPoint =>
             CustomPostProcessInjectionPoint.AfterPostProcess;
