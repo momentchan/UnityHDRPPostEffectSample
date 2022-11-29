@@ -33,6 +33,7 @@ namespace Cinema.PostProcessing
             mapper.Add(PostProcessType.RadiationBlur, typeof(RadiationBlur));
             mapper.Add(PostProcessType.ReflectionHorizontal, typeof(Reflection));
             mapper.Add(PostProcessType.ReflectionVertical, typeof(Reflection));
+            mapper.Add(PostProcessType.EdgeDetection, typeof(EdgeDetection));
 
             foreach (var wraper in wrapers)
             {
@@ -71,6 +72,7 @@ namespace Cinema.PostProcessing
         RadiationBlur,
         ReflectionHorizontal,
         ReflectionVertical,
+        EdgeDetection,
     }
 
     [Serializable]

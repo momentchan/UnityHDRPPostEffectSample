@@ -1,16 +1,4 @@
-﻿
-//
-// Cinema
-//
-// MIT License
-// Copyright (c) 2021 Tasuku TAKAHASHI
-// Copyright (c) 2018 kaiware007
-//     UnityVJShaderSlide20181108, https://github.com/kaiware007/UnityVJShaderSlide20181108
-// Copyright (C) 2011 by Ashima Arts (Simplex noise)
-// Copyright (C) 2011-2016 by Stefan Gustavson (Classic noise and others)
-//
-
-#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
+﻿#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Common.hlsl"
 #include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
 #include "Packages/com.unity.render-pipelines.high-definition/Runtime/ShaderLibrary/ShaderVariables.hlsl"
 #include "./DistortionUvSG.hlsl"

@@ -56,7 +56,7 @@ namespace Cinema.PostProcessing
 
         public override void Execute(MonoBehaviour go, PostProcessType type)
         {
-            go.StartCoroutine(Coroutine());
+            go.StartCoroutine(ApplyRadiationBlur());
         }
 
         public override void Reset()
@@ -64,7 +64,7 @@ namespace Cinema.PostProcessing
             power.value = 0;
         }
 
-        private IEnumerator Coroutine()
+        private IEnumerator ApplyRadiationBlur()
         {
             float duration = effectTime.value;
             while (duration > 0f)

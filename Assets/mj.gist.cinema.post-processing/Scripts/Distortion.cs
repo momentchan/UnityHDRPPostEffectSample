@@ -81,9 +81,9 @@ namespace Cinema.PostProcessing
         public override void Execute(MonoBehaviour go, PostProcessType type)
         {
             if (type == PostProcessType.NoiseDistortion)
-                go.StartCoroutine(NoiseDistortion());
+                go.StartCoroutine(ApplyNoiseDistortion());
             if (type == PostProcessType.BarrelDistortion)
-                go.StartCoroutine(BarrelDistortion());
+                go.StartCoroutine(ApplyBarrelDistortion());
         }
 
         public override void Reset()
@@ -92,7 +92,7 @@ namespace Cinema.PostProcessing
             barrelDistortionPower.value = Vector2.zero;
         }
 
-        private IEnumerator NoiseDistortion()
+        private IEnumerator ApplyNoiseDistortion()
         {
             float duration = effectTime.value;
             while (duration > 0f)
@@ -103,7 +103,7 @@ namespace Cinema.PostProcessing
             }
         }
 
-        private IEnumerator BarrelDistortion()
+        private IEnumerator ApplyBarrelDistortion()
         {
             float duration = effectTime.value;
             float start = barrelDistortionSwitcher ? maxBarrelDistortionPower.value : 0;

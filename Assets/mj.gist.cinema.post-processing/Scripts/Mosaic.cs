@@ -56,7 +56,7 @@ namespace Cinema.PostProcessing
 
         public override void Execute(MonoBehaviour go, PostProcessType type)
         {
-            go.StartCoroutine(ActionMosaic());
+            go.StartCoroutine(ApplyMosaic());
         }
 
         public override void Reset()
@@ -64,7 +64,7 @@ namespace Cinema.PostProcessing
             isCircle.value = false;
         }
 
-        IEnumerator ActionMosaic()
+        IEnumerator ApplyMosaic()
         {
             float duration = effectTime.value;
             while (duration > 0f)

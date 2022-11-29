@@ -117,7 +117,7 @@ namespace Cinema.PostProcessing
 
         public override void Execute(MonoBehaviour go, PostProcessType type)
         {
-            go.StartCoroutine(Coroutine());
+            go.StartCoroutine(ApllyGlitch());
         }
 
         public override void Reset()
@@ -125,7 +125,7 @@ namespace Cinema.PostProcessing
             intensity.value = 0;
         }
 
-        private IEnumerator Coroutine()
+        private IEnumerator ApllyGlitch()
         {
             float duration = effectTime.value;
             while (duration > 0f)
