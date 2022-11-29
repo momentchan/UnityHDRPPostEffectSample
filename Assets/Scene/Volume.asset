@@ -39,7 +39,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   transitionT:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0.25
   fadeTime:
     m_OverrideState: 1
@@ -48,6 +48,9 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 250
   startInvert:
+    m_OverrideState: 1
+    m_Value: 0
+  threshold:
     m_OverrideState: 1
     m_Value: 0
   easeType: 14

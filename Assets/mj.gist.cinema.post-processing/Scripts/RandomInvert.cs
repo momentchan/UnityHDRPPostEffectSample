@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
 using Cinema.PostProcessing.KMath;
+using System.Collections;
 
 namespace Cinema.PostProcessing
 {
@@ -10,16 +11,12 @@ namespace Cinema.PostProcessing
     {
         public ClampedFloatParameter fadeTime = new ClampedFloatParameter(0.25f, 0f, 3f);
         public ClampedFloatParameter noiseScale = new ClampedFloatParameter(250f, 0f, 500f);
-        public Bool​Parameter startInvert = new Bool​Parameter(false);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
+        public FloatParameter threshold = new FloatParameter(0);
+        public Bool​Parameter isInvert = new BoolParameter(false);
 
         private Material _material;
-        private float fadeDuration = 0;
-        private float threshold = 0;
         private float startTime = 0;
         public EaseType easeType = EaseType.QuintOut;
-        public bool isInvert = false;
-        private bool cachedStartInvert = false;
 
         static class ShaderIDs
         {
@@ -28,7 +25,6 @@ namespace Cinema.PostProcessing
             internal static readonly int StartTime = Shader.PropertyToID("_StartTime");
             internal static readonly int NoiseScale = Shader.PropertyToID("_NoiseScale");
             internal static readonly int NegativeRatio = Shader.PropertyToID("_NegativeRatio");
-
             internal static readonly int InputTexture = Shader.PropertyToID("_InputTexture");
         }
 
@@ -46,27 +42,8 @@ namespace Cinema.PostProcessing
         {
             if (_material == null) return;
 
-            if (fadeDuration > 0f)
-            {
-                fadeDuration -= Time.deltaTime;
-                float d = Mathf.Clamp01(fadeDuration / fadeTime.value);
-                threshold = Easing.Ease(easeType, 1f, 0f, d);
-
-                if(d <= 0f)
-                {
-                    isInvert = !isInvert;
-                    threshold = 0;
-                }
-            }
-            
-            //TODO(Tasuku): 後でマウス操作にする
-            if (startInvert.value != cachedStartInvert)
-            {
-                StartInvert();
-            }
-
-            _material.SetFloat(ShaderIDs.Threshold, threshold);
-            _material.SetInt(ShaderIDs.Invert, (isInvert ? 1 : 0));
+            _material.SetFloat(ShaderIDs.Threshold, threshold.value);
+            _material.SetInt(ShaderIDs.Invert, (isInvert.value ? 1 : 0));
             _material.SetFloat(ShaderIDs.StartTime, startTime);
             _material.SetFloat(ShaderIDs.NoiseScale, noiseScale.value);
             _material.SetTexture(ShaderIDs.InputTexture, srcRT);
@@ -76,14 +53,6 @@ namespace Cinema.PostProcessing
 
             // Blit
             HDUtils.DrawFullScreen(cmd, _material, destRT, null, pass);
-            
-            cachedStartInvert = startInvert.value;
-        }
-
-        public void StartInvert()
-        {
-            fadeDuration = fadeTime.value;
-            startTime = Time.time;
         }
 
         public override void Cleanup()
@@ -93,13 +62,25 @@ namespace Cinema.PostProcessing
 
         public override void Execute(MonoBehaviour go, PostProcessType type)
         {
-            startInvert.value = !startInvert.value;
+            go.StartCoroutine(ApplyRandomInvert());
         }
 
+        IEnumerator ApplyRandomInvert()
+        {
+            yield return null;
+            float duration = transitionT.value;
+            startTime = Time.time;
+            isInvert.value = !isInvert.value;
+            while (duration > 0f)
+            {
+                duration = Mathf.Max(duration - Time.deltaTime, 0);
+                threshold.value = Easing.Ease(EaseType.QuadOut, 1, 0, duration / transitionT.value);
+                yield return null;
+            }
+        }
         public override void Reset()
         {
-            startInvert.value = false;
-            isInvert = false;
+            isInvert.value = false;
         }
     }
 }
