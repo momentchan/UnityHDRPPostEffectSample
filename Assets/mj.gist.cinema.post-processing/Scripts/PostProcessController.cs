@@ -34,6 +34,7 @@ namespace Cinema.PostProcessing
             mapper.Add(PostProcessType.ReflectionHorizontal, typeof(Reflection));
             mapper.Add(PostProcessType.ReflectionVertical, typeof(Reflection));
             mapper.Add(PostProcessType.EdgeDetection, typeof(EdgeDetection));
+            mapper.Add(PostProcessType.Negative, typeof(Negative));
 
             foreach (var wraper in wrapers)
             {
@@ -73,6 +74,7 @@ namespace Cinema.PostProcessing
         ReflectionHorizontal,
         ReflectionVertical,
         EdgeDetection,
+        Negative,
     }
 
     [Serializable]
