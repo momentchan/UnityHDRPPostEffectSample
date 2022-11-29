@@ -10,7 +10,6 @@ namespace Cinema.PostProcessing
     public sealed class Negative : PostProcessComponent
     {
         public ClampedFloatParameter ratio = new ClampedFloatParameter(0f, 0, 1.0f);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private bool isNegative;
 
@@ -54,17 +53,18 @@ namespace Cinema.PostProcessing
         {
             ratio.value = 0;
         }
+
         IEnumerator ApplyNegative()
         {
             yield return null;
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             float start = isNegative ? 1 : 0;
             float end = 1f - start;
             isNegative = !isNegative;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                ratio.value = Easing.Ease(EaseType.QuadOut, start, end, 1f - duration / effectTime.value);
+                ratio.value = Easing.Ease(EaseType.QuadOut, start, end, 1f - duration / transitionT.value);
                 yield return null;
             }
         }

@@ -18,7 +18,6 @@ namespace Cinema.PostProcessing
         public ClampedFloatParameter maxBarrelDistortionPower = new ClampedFloatParameter(6f, 0, 10f);
 
         public Vector2Parameter barrelDistortionPower = new Vector2Parameter(new Vector2(0, 0));
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         Material _material;
         private bool barrelDistortionSwitcher = false;
@@ -94,18 +93,18 @@ namespace Cinema.PostProcessing
 
         private IEnumerator ApplyNoiseDistortion()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                noiseDistortionPower.value = Easing.Ease(EaseType.QuadOut, maxNoiseDistortionPower.value, 0, 1f - duration / effectTime.value);
+                noiseDistortionPower.value = Easing.Ease(EaseType.QuadOut, maxNoiseDistortionPower.value, 0, 1f - duration / transitionT.value);
                 yield return null;
             }
         }
 
         private IEnumerator ApplyBarrelDistortion()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             float start = barrelDistortionSwitcher ? maxBarrelDistortionPower.value : 0;
             float end = maxBarrelDistortionPower.value - start;
             barrelDistortionSwitcher = !barrelDistortionSwitcher;
@@ -113,7 +112,7 @@ namespace Cinema.PostProcessing
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                float power = Easing.Ease(EaseType.QuadOut, start, end, 1f - duration / effectTime.value);
+                float power = Easing.Ease(EaseType.QuadOut, start, end, 1f - duration / transitionT.value);
                 barrelDistortionPower.value = new Vector2(power, power);
                 yield return null;
             }

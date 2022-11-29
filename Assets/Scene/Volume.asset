@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: RadiationBlur
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
@@ -22,9 +25,6 @@ MonoBehaviour:
   maxPower:
     m_OverrideState: 1
     m_Value: 64
-  effectTime:
-    m_OverrideState: 1
-    m_Value: 0.25
 --- !u!114 &-2910055180468845883
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -38,6 +38,9 @@ MonoBehaviour:
   m_Name: RandomInvert
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   fadeTime:
     m_OverrideState: 1
     m_Value: 0.25
@@ -47,9 +50,6 @@ MonoBehaviour:
   startInvert:
     m_OverrideState: 1
     m_Value: 0
-  effectTime:
-    m_OverrideState: 1
-    m_Value: 0.25
   easeType: 14
   isInvert: 0
 --- !u!114 &-1487213958045309889
@@ -65,6 +65,9 @@ MonoBehaviour:
   m_Name: RectBlockGlitch
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   noiseSpeed:
     m_OverrideState: 1
     m_Value: 0.9
@@ -80,9 +83,6 @@ MonoBehaviour:
   maxIntensity:
     m_OverrideState: 1
     m_Value: 0.95
-  effectTime:
-    m_OverrideState: 1
-    m_Value: 0.25
 --- !u!114 &-56729043617830646
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Name: Mosaic
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   scale:
     m_OverrideState: 1
     m_Value: 0
@@ -150,9 +153,6 @@ MonoBehaviour:
   isCircle:
     m_OverrideState: 1
     m_Value: 0
-  effectTime:
-    m_OverrideState: 1
-    m_Value: 0.25
 --- !u!114 &2360852715217990988
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -166,6 +166,9 @@ MonoBehaviour:
   m_Name: EdgeDetection
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   power:
     m_OverrideState: 1
     m_Value: 1
@@ -190,9 +193,6 @@ MonoBehaviour:
   filterMode:
     m_OverrideState: 1
     m_Value: 1
-  effectTime:
-    m_OverrideState: 0
-    m_Value: 0.25
 --- !u!114 &4057247792243928735
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -206,14 +206,17 @@ MonoBehaviour:
   m_Name: Distortion
   m_EditorClassIdentifier: 
   active: 1
-  noiseDistortionScale:
+  transitionT:
     m_OverrideState: 0
+    m_Value: 0.25
+  noiseDistortionScale:
+    m_OverrideState: 1
     m_Value: 0.5
   noiseDistortionPosition:
     m_OverrideState: 0
     m_Value: {x: 0, y: 0, z: 1}
   noiseDistortionPower:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   noiseDistortionTimeScale:
     m_OverrideState: 0
@@ -225,11 +228,8 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 6
   barrelDistortionPower:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: {x: 0, y: 0}
-  effectTime:
-    m_OverrideState: 0
-    m_Value: 0.25
 --- !u!114 &6931812780479918136
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -243,12 +243,12 @@ MonoBehaviour:
   m_Name: Negative
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   ratio:
     m_OverrideState: 1
     m_Value: 0
-  effectTime:
-    m_OverrideState: 0
-    m_Value: 0.25
 --- !u!114 &8796806661447172691
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -262,15 +262,15 @@ MonoBehaviour:
   m_Name: RGBShift
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   power:
     m_OverrideState: 1
     m_Value: 0
   maxPower:
     m_OverrideState: 1
     m_Value: 54
-  effectTime:
-    m_OverrideState: 1
-    m_Value: 0.25
 --- !u!114 &9191477438897090540
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -284,12 +284,12 @@ MonoBehaviour:
   m_Name: Reflection
   m_EditorClassIdentifier: 
   active: 1
+  transitionT:
+    m_OverrideState: 0
+    m_Value: 0.25
   isHorizontal:
     m_OverrideState: 1
     m_Value: 0
   isVertical:
     m_OverrideState: 1
     m_Value: 0
-  effectTime:
-    m_OverrideState: 1
-    m_Value: 0.25

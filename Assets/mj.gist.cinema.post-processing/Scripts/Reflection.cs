@@ -9,7 +9,6 @@ namespace Cinema.PostProcessing
     {
         public Bool​Parameter isHorizontal = new Bool​Parameter(false);
         public Bool​Parameter isVertical = new Bool​Parameter(false);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private Material _material;
 

@@ -17,7 +17,6 @@ namespace Cinema.PostProcessing
         public ColorParameter backColor = new ColorParameter(Color.white);
         public ColorParameter edgeColor = new ColorParameter(Color.black);
         public EdgeModeParameter filterMode = new EdgeModeParameter(EdgeMode.Sobel);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         Material _material;
         private bool edgeDetectSwitcher;
@@ -121,14 +120,14 @@ namespace Cinema.PostProcessing
         }
         IEnumerator ApplyEdgeDetection()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             float start = edgeDetectSwitcher ? 0 : 1;
             float end = 1f - start;
             edgeDetectSwitcher = !edgeDetectSwitcher;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                blend.value = Easing.Ease(EaseType.QuadOut, start, end, 1f - duration / effectTime.value);
+                blend.value = Easing.Ease(EaseType.QuadOut, start, end, 1f - duration / transitionT.value);
                 yield return null;
             }
         }

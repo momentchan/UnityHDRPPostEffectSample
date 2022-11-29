@@ -12,7 +12,6 @@ namespace Cinema.PostProcessing
         public Vector2Parameter center = new Vector2Parameter(new Vector3(0.5f, 0.5f));
         public ClampedFloatParameter power = new ClampedFloatParameter(0, 0, 100);
         public ClampedFloatParameter maxPower = new ClampedFloatParameter(64, 0, 100);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         Material _material;
 
@@ -66,11 +65,11 @@ namespace Cinema.PostProcessing
 
         private IEnumerator ApplyRadiationBlur()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                power.value = Easing.Ease(EaseType.QuadOut, maxPower.value, 1, 1f - duration / effectTime.value);
+                power.value = Easing.Ease(EaseType.QuadOut, maxPower.value, 1, 1f - duration / transitionT.value);
                 yield return null;
             }
         }

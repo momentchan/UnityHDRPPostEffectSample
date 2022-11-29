@@ -14,7 +14,6 @@ namespace Cinema.PostProcessing
         public ClampedFloatParameter intensity = new ClampedFloatParameter(0f, 0f, 1.0f); //ずらす強さ
         public ClampedIntParameter glitchScale = new ClampedIntParameter(55, 0, 150); //ずらす高さ
         public ClampedFloatParameter maxIntensity = new ClampedFloatParameter(0.95f, 0f, 1.0f); //ずらす強さ
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private Material _material;
         private Texture2D noiseTexture;
@@ -127,11 +126,11 @@ namespace Cinema.PostProcessing
 
         private IEnumerator ApllyGlitch()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                intensity.value = Easing.Ease(EaseType.QuadOut, maxIntensity.value, 0, 1f - duration / effectTime.value);
+                intensity.value = Easing.Ease(EaseType.QuadOut, maxIntensity.value, 0, 1f - duration / transitionT.value);
                 yield return null;
             }
         }

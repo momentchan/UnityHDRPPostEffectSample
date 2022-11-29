@@ -12,7 +12,6 @@ namespace Cinema.PostProcessing
         public ClampedFloatParameter scale = new ClampedFloatParameter(0f, 0f, 100.0f);
         public ClampedFloatParameter maxScale = new ClampedFloatParameter(64f, 0f, 100.0f);
         public Bool​Parameter isCircle = new Bool​Parameter(false);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         Material _material;
 
@@ -66,11 +65,11 @@ namespace Cinema.PostProcessing
 
         IEnumerator ApplyMosaic()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                scale.value = Easing.Ease(EaseType.QuadOut, maxScale.value, 1, 1f - duration / effectTime.value);
+                scale.value = Easing.Ease(EaseType.QuadOut, maxScale.value, 1, 1f - duration / transitionT.value);
                 yield return null;
             }
         }

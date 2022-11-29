@@ -11,7 +11,6 @@ namespace Cinema.PostProcessing
     {
         public ClampedFloatParameter power = new ClampedFloatParameter(0, 0f, 100f);
         public ClampedFloatParameter maxPower = new ClampedFloatParameter(54f, 0f, 100f);
-        public FloatParameter effectTime = new FloatParameter(0.25f);
 
         private Material _material;
 
@@ -67,11 +66,11 @@ namespace Cinema.PostProcessing
 
         IEnumerator ApplyRGBShift()
         {
-            float duration = effectTime.value;
+            float duration = transitionT.value;
             while (duration > 0f)
             {
                 duration = Mathf.Max(duration - Time.deltaTime, 0);
-                power.value = Easing.Ease(EaseType.QuadOut, maxPower.value, 0, 1f - duration / effectTime.value);
+                power.value = Easing.Ease(EaseType.QuadOut, maxPower.value, 0, 1f - duration / transitionT.value);
                 yield return null;
             }
         }
